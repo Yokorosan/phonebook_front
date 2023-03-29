@@ -1,5 +1,5 @@
 import { IHeaderProps } from "@/types";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import {
   Box,
   Flex,
@@ -18,9 +18,11 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { destroyCookie } from "nookies";
-import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import ModalRegisterForm from "./modalregisterform";
 import AboutModal from "./modalabout";
+import EditFormModal from "./editform";
+import { useUser } from "@/contexts/userContext";
 
 const Links = ["Home"];
 
@@ -44,11 +46,20 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 );
 
 const Header = ({ name, isLogged = false }: IHeaderProps) => {
+  const { setUser } = useUser();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [openEdit, setOpenEdit] = useState(false);
   const router = useRouter();
   const goToHome = () => {
     router.push("/", undefined);
   };
+  const logout = () => {
+    destroyCookie(null, "phonebook.token");
+    destroyCookie(null, "phonebook.user");
+    router.push("/");
+    setUser(null);
+  };
+
   return (
     <>
       <Box bg={"gray.400"} px={4}>
@@ -79,31 +90,24 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
-            <>
-              <Text color={"white"} paddingRight={2}>
-                {name}
-              </Text>
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                >
-                  {/* <Avatar size={"sm"} src={avatar} /> */}
-                </MenuButton>
-                <MenuList bg={"blue.600"}>
-                  <MenuItem
-                    bg={"blue.600"}
-                    color={"white"}
-                    // onClick={() => logout()}
+            {isLogged ? (
+              <>
+                <Menu>
+                  <MenuButton
+                    as={Box}
+                    marginRight={"10px"}
+                    fontWeight={"bold"}
+                    fontSize={"24px"}
                   >
-                    Sair
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            </>
+                    {name}
+                  </MenuButton>
+                  <MenuList>
+                    <MenuItem onClick={() => setOpenEdit(true)}>Edit</MenuItem>
+                    <MenuItem onClick={() => logout()}>Sair</MenuItem>
+                  </MenuList>
+                </Menu>
+              </>
+            ) : null}
           </Flex>
         </Flex>
 
@@ -118,6 +122,10 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
           </Box>
         ) : null}
       </Box>
+
+      {openEdit ? (
+        <EditFormModal setEditOpen={setOpenEdit} status={openEdit} />
+      ) : null}
     </>
   );
 };
