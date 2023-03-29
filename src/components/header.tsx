@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { destroyCookie } from "nookies";
-import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import ModalRegisterForm from "./modalregisterform";
 import AboutModal from "./modalabout";
 
@@ -49,6 +49,12 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
   const goToHome = () => {
     router.push("/", undefined);
   };
+  const logout = () => {
+    destroyCookie(null, "phonebook.token");
+    destroyCookie(null, "phonebook.user");
+    router.push("/");
+  };
+
   return (
     <>
       <Box bg={"gray.400"} px={4}>
@@ -79,31 +85,24 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
-            <>
-              <Text color={"white"} paddingRight={2}>
-                {name}
-              </Text>
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                >
-                  {/* <Avatar size={"sm"} src={avatar} /> */}
-                </MenuButton>
-                <MenuList bg={"blue.600"}>
-                  <MenuItem
-                    bg={"blue.600"}
-                    color={"white"}
-                    // onClick={() => logout()}
+            {isLogged ? (
+              <>
+                <Menu>
+                  <MenuButton
+                    as={Text}
+                    marginRight={"10px"}
+                    fontWeight={"bold"}
+                    fontSize={"24px"}
                   >
-                    Sair
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            </>
+                    Yokoro
+                  </MenuButton>
+                  <MenuList>
+                    <MenuItem>Edit</MenuItem>
+                    <MenuItem onClick={() => logout()}>Sair</MenuItem>
+                  </MenuList>
+                </Menu>
+              </>
+            ) : null}
           </Flex>
         </Flex>
 

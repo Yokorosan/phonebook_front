@@ -1,7 +1,9 @@
+import Header from "@/components/header";
+
 const Dashboard = () => {
   return (
     <>
-      <h1>Aqui fica a Dashboard</h1>
+      <Header isLogged={true} />
     </>
   );
 };
