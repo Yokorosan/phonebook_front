@@ -73,7 +73,13 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box>
-              <Text fontWeight={"bold"} fontSize={20} color={"white"}>
+              <Text
+                fontWeight={"bold"}
+                fontSize={20}
+                color={"white"}
+                marginLeft={"5px"}
+                marginRight={"5px"}
+              >
                 PhoneBook
               </Text>
             </Box>
@@ -97,7 +103,7 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
                     as={Box}
                     marginRight={"10px"}
                     fontWeight={"bold"}
-                    fontSize={"24px"}
+                    fontSize={"18px"}
                   >
                     {name}
                   </MenuButton>

@@ -126,6 +126,7 @@ const Body = ({ user, isLogged = false, contacts }: IBodyProps) => {
                     placeholder="Search Contacts"
                     textColor={"black"}
                     onChange={(e) => setFilteredContact(e.target.value)}
+                    bg={"white"}
                     _placeholder={{ opacity: 1, color: "black" }}
                   />
                   <InputRightElement>{<Search2Icon />}</InputRightElement>

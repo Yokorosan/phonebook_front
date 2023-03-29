@@ -49,7 +49,7 @@ const ModalRegisterContact = () => {
 
   return (
     <>
-      <Button width="150px" variant="default" onClick={opening}>
+      <Button width="200px" variant="default" onClick={opening}>
         Register new Contact
       </Button>
 
