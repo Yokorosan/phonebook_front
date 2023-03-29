@@ -17,33 +17,45 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useUser } from "@/contexts/userContext";
+import { useRouter } from "next/router";
 
 const ModalRegisterForm = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfPassword, setShowConfPassword] = useState(false);
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IRegisterUser>({ resolver: yupResolver(schema) });
+  const { registerUser } = useUser();
+  const opening = () => {
+    onOpen();
+    router.push("/", "/register", { shallow: true });
+  };
 
+  const closing = () => {
+    onClose();
+    router.push("/", undefined, { shallow: true });
+  };
   const onFormSubmit = (formData: IRegisterUser) => {
     delete formData.confirmPassword;
-    console.log(formData);
+    registerUser(formData, closing);
   };
 
   return (
     <>
-      <Button variant="default" onClick={onOpen}>
+      <Button width="150px" variant="default" onClick={opening}>
         Register
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={closing}>
         <ModalOverlay />
         <ModalContent bg="white">
           <ModalHeader>Crie sua conta</ModalHeader>
@@ -54,7 +66,7 @@ const ModalRegisterForm = () => {
                 required
                 focusBorderColor="blue.300"
                 errorBorderColor="red.300"
-                type="name"
+                type="text"
                 {...register("name")}
               />
               <FormHelperText>{errors.name?.message}</FormHelperText>
@@ -66,7 +78,7 @@ const ModalRegisterForm = () => {
                 required
                 focusBorderColor="blue.300"
                 errorBorderColor="red.300"
-                type="email"
+                type="text"
                 {...register("email")}
               />
               <FormHelperText>{errors.email?.message}</FormHelperText>
@@ -80,6 +92,7 @@ const ModalRegisterForm = () => {
                   focusBorderColor="blue.300"
                   errorBorderColor="red.300"
                   type={showPassword ? "text" : "password"}
+                  {...register("password")}
                 />
                 <InputRightElement h={"full"}>
                   <Button
@@ -144,7 +157,7 @@ const ModalRegisterForm = () => {
             >
               Register
             </Button>
-            <Button size="lg" onClick={onClose}>
+            <Button size="lg" onClick={closing}>
               Cancel
             </Button>
           </ModalFooter>

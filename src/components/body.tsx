@@ -1,4 +1,5 @@
 import { Box, Center, Flex, Text } from "@chakra-ui/react";
+import LoginForm from "./loginform";
 import ModalRegisterForm from "./modalregisterform";
 
 const Body = () => {
@@ -10,9 +11,10 @@ const Body = () => {
         alignItems={"center"}
         marginTop="10px"
         w="900px"
-        h="500px"
+        h="630px"
         bg="white.50"
         rounded="10px"
+        padding={{ base: "10px", md: "0px" }}
         boxShadow={"black 0px 0px 5px 2px;"}
       >
         <Center
@@ -54,7 +56,11 @@ const Body = () => {
             md: "2px",
           }}
           borderColor="black"
+          display={"flex"}
+          flexDirection={"column"}
         >
+          <Text>Login</Text>
+          <LoginForm />
           <ModalRegisterForm />
         </Center>
       </Flex>
