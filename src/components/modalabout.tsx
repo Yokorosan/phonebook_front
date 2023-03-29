@@ -47,10 +47,10 @@ const AboutModal = () => {
           </ModalHeader>
           <ModalBody>
             <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-              sed aut. Nostrum deserunt vel aliquid consequuntur suscipit
-              inventore soluta esse quaerat sed, exercitationem a dolore
-              corporis omnis nobis laboriosam dolor.
+              We are a small company thats bringing a faster and convenient way
+              for you to maintain all your contacts near you at all times!!!!
+              <br />
+              Have a great Day!
             </Text>
           </ModalBody>
         </ModalContent>

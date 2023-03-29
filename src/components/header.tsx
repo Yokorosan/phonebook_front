@@ -1,5 +1,5 @@
 import { IHeaderProps } from "@/types";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import {
   Box,
   Flex,
@@ -21,6 +21,8 @@ import { destroyCookie } from "nookies";
 import { ChevronDownIcon, CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import ModalRegisterForm from "./modalregisterform";
 import AboutModal from "./modalabout";
+import EditFormModal from "./editform";
+import { useUser } from "@/contexts/userContext";
 
 const Links = ["Home"];
 
@@ -44,7 +46,9 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 );
 
 const Header = ({ name, isLogged = false }: IHeaderProps) => {
+  const { setUser } = useUser();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [openEdit, setOpenEdit] = useState(false);
   const router = useRouter();
   const goToHome = () => {
     router.push("/", undefined);
@@ -53,6 +57,7 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
     destroyCookie(null, "phonebook.token");
     destroyCookie(null, "phonebook.user");
     router.push("/");
+    setUser(null);
   };
 
   return (
@@ -89,15 +94,15 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
               <>
                 <Menu>
                   <MenuButton
-                    as={Text}
+                    as={Box}
                     marginRight={"10px"}
                     fontWeight={"bold"}
                     fontSize={"24px"}
                   >
-                    Yokoro
+                    {name}
                   </MenuButton>
                   <MenuList>
-                    <MenuItem>Edit</MenuItem>
+                    <MenuItem onClick={() => setOpenEdit(true)}>Edit</MenuItem>
                     <MenuItem onClick={() => logout()}>Sair</MenuItem>
                   </MenuList>
                 </Menu>
@@ -117,6 +122,10 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
           </Box>
         ) : null}
       </Box>
+
+      {openEdit ? (
+        <EditFormModal setEditOpen={setOpenEdit} status={openEdit} />
+      ) : null}
     </>
   );
 };
