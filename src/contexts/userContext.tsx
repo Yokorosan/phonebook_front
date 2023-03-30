@@ -7,13 +7,11 @@ import {
   IUserLogged,
 } from "@/types";
 import { Box, useToast } from "@chakra-ui/react";
-import { GetServerSideProps } from "next";
 import {
   createContext,
   Dispatch,
   SetStateAction,
   useContext,
-  useEffect,
   useState,
 } from "react";
 import nookies, { destroyCookie } from "nookies";

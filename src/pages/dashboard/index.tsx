@@ -1,14 +1,10 @@
 import Body from "@/components/body";
 import Header from "@/components/header";
 import { useUser } from "@/contexts/userContext";
-import api from "@/services/api";
-import { IUserLogged } from "@/types";
 import { Spinner } from "@chakra-ui/react";
-import { profile } from "console";
 import { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 import nookies from "nookies";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const Dashboard = () => {
   const { profileUser, user, contact } = useUser();
@@ -23,27 +19,6 @@ const Dashboard = () => {
     </>
   );
 };
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   let user = {};
-//   const cookies = nookies.get();
-//   try {
-//     api.defaults.headers.common.authorization = `Token ${cookies["phonebook.token"]}`;
-//     const profile = await api.get("/users");
-//     return {
-//       props: {
-//         name: profile.data.name,
-//       },
-//     };
-//   } catch {
-//     return {
-//       redirect: {
-//         destination: "/dashboard",
-//         permanent: false,
-//       },
-//     };
-//   }
-// };
 
 export default Dashboard;
 

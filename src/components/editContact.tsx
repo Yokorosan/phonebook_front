@@ -4,25 +4,18 @@ import { editUserSchema as schema } from "@/schemas";
 import { useForm } from "react-hook-form";
 import {
   Button,
-  Center,
   FormControl,
   FormHelperText,
   FormLabel,
   Input,
-  InputGroup,
-  InputRightElement,
   Modal,
   ModalContent,
   ModalHeader,
   ModalOverlay,
   useDisclosure,
-  Text,
   ModalFooter,
   ModalBody,
-  Spinner,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useContact } from "@/contexts/contactContext";
 
 const EditContactForm = ({ user }: any) => {

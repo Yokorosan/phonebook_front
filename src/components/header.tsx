@@ -3,7 +3,6 @@ import { ReactNode, useState } from "react";
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
   Link,
   IconButton,
@@ -18,32 +17,10 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { destroyCookie } from "nookies";
-import { ChevronDownIcon, CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import ModalRegisterForm from "./modalregisterform";
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import AboutModal from "./modalabout";
 import EditFormModal from "./editform";
 import { useUser } from "@/contexts/userContext";
-
-const Links = ["Home"];
-
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    textAlign={"center"}
-    bg={"white"}
-    textColor={"black"}
-    _hover={{
-      textDecoration: "none",
-      bg: "blue.300",
-      color: "black",
-    }}
-    href={"/"}
-  >
-    {children}
-  </Link>
-);
 
 const Header = ({ name, isLogged = false }: IHeaderProps) => {
   const { setUser } = useUser();
