@@ -1,9 +1,7 @@
-import { CloseIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   Flex,
-  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -13,7 +11,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 const AboutModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

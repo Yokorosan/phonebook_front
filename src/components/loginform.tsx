@@ -37,7 +37,9 @@ const LoginForm = () => {
           required
           focusBorderColor="blue.300"
           errorBorderColor="red.300"
+          bg={"white"}
           type="text"
+          _placeholder={{ opacity: 1, color: "black" }}
           {...register("email")}
         />
         <FormHelperText>{errors.email?.message}</FormHelperText>
@@ -50,6 +52,7 @@ const LoginForm = () => {
             required
             focusBorderColor="blue.300"
             errorBorderColor="red.300"
+            bg={"white"}
             type={showPassword ? "text" : "password"}
             {...register("password")}
           />

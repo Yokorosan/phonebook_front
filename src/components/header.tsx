@@ -3,7 +3,6 @@ import { ReactNode, useState } from "react";
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
   Link,
   IconButton,
@@ -18,32 +17,10 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { destroyCookie } from "nookies";
-import { ChevronDownIcon, CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import ModalRegisterForm from "./modalregisterform";
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import AboutModal from "./modalabout";
 import EditFormModal from "./editform";
 import { useUser } from "@/contexts/userContext";
-
-const Links = ["Home"];
-
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    textAlign={"center"}
-    bg={"white"}
-    textColor={"black"}
-    _hover={{
-      textDecoration: "none",
-      bg: "blue.300",
-      color: "black",
-    }}
-    href={"/"}
-  >
-    {children}
-  </Link>
-);
 
 const Header = ({ name, isLogged = false }: IHeaderProps) => {
   const { setUser } = useUser();
@@ -73,7 +50,13 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box>
-              <Text fontWeight={"bold"} fontSize={20} color={"white"}>
+              <Text
+                fontWeight={"bold"}
+                fontSize={20}
+                color={"white"}
+                marginLeft={"5px"}
+                marginRight={"5px"}
+              >
                 PhoneBook
               </Text>
             </Box>
@@ -97,7 +80,7 @@ const Header = ({ name, isLogged = false }: IHeaderProps) => {
                     as={Box}
                     marginRight={"10px"}
                     fontWeight={"bold"}
-                    fontSize={"24px"}
+                    fontSize={"18px"}
                   >
                     {name}
                   </MenuButton>

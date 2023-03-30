@@ -1,8 +1,6 @@
-import { IBodyProps, IUserContacts } from "@/types";
-import { Search2Icon, SearchIcon } from "@chakra-ui/icons";
+import { IBodyProps } from "@/types";
+import { Search2Icon } from "@chakra-ui/icons";
 import {
-  Box,
-  Button,
   Center,
   Flex,
   Input,
@@ -15,12 +13,11 @@ import List from "./list";
 import LoginForm from "./loginform";
 import ModalRegisterContact from "./modalregisterContact";
 import ModalRegisterForm from "./modalregisterform";
-import { useUser } from "@/contexts/userContext";
+
 import { useState } from "react";
 
 const Body = ({ user, isLogged = false, contacts }: IBodyProps) => {
   const [filteredContact, setFilteredContact] = useState("");
-  const [search, setSearch] = useState("");
   const filterContacts = contacts?.filter((contact) =>
     filteredContact === " "
       ? true
@@ -126,6 +123,7 @@ const Body = ({ user, isLogged = false, contacts }: IBodyProps) => {
                     placeholder="Search Contacts"
                     textColor={"black"}
                     onChange={(e) => setFilteredContact(e.target.value)}
+                    bg={"white"}
                     _placeholder={{ opacity: 1, color: "black" }}
                   />
                   <InputRightElement>{<Search2Icon />}</InputRightElement>

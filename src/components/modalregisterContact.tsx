@@ -8,8 +8,6 @@ import {
   FormHelperText,
   FormLabel,
   Input,
-  InputGroup,
-  InputRightElement,
   Modal,
   ModalBody,
   ModalContent,
@@ -19,9 +17,6 @@ import {
   useDisclosure,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { useUser } from "@/contexts/userContext";
 import { useRouter } from "next/router";
 import { useContact } from "@/contexts/contactContext";
 
@@ -49,7 +44,7 @@ const ModalRegisterContact = () => {
 
   return (
     <>
-      <Button width="150px" variant="default" onClick={opening}>
+      <Button width="200px" variant="default" onClick={opening}>
         Register new Contact
       </Button>
 

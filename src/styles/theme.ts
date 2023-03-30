@@ -1,5 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
-
+const activeLabelStyles = {
+  transform: "scale(0.85) translateY(-24px)",
+};
 const customTheme = extendTheme({
   colors: {
     white: {
@@ -27,8 +29,8 @@ const customTheme = extendTheme({
     },
   },
   fonts: {
-    heading: "Montserrat",
-    body: "Montserrat",
+    heading: "Roboto",
+    body: "Roboto",
   },
   fontSises: {
     xs: "0.75rem",
@@ -76,7 +78,7 @@ const customTheme = extendTheme({
     Button: {
       variants: {
         default: {
-          bg: "blue.600",
+          bg: "blue.500",
           border: "2px solid",
           borderColor: "blue.600",
           color: "gray.50",
