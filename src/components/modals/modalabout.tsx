@@ -17,22 +17,13 @@ const AboutModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
-  const opening = () => {
-    onOpen();
-    router.push("/", "/about", { shallow: true });
-  };
-
-  const closing = () => {
-    onClose();
-    router.push("/", undefined, { shallow: true });
-  };
   return (
     <>
-      <Button variant={"default"} onClick={() => opening()}>
+      <Button variant={"default"} onClick={onOpen}>
         About
       </Button>
 
-      <Modal isOpen={isOpen} onClose={() => closing()}>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent bg="white">
           <ModalHeader>
