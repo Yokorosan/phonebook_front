@@ -18,8 +18,8 @@ import {
 import { useRouter } from "next/router";
 import { destroyCookie } from "nookies";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import AboutModal from "./modalabout";
-import EditFormModal from "./editform";
+import AboutModal from "../modals/modalabout";
+import EditFormModal from "../forms/editform";
 import { useUser } from "@/contexts/userContext";
 
 const Header = ({ name, isLogged = false }: IHeaderProps) => {

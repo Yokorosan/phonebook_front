@@ -2,7 +2,21 @@
 
 This application was made using next.js and styled with Chakra.ui, most of the commands for that frameworks are valid
 
-## To Start the development server!
+## To use the Application:
+
+### 1. Install the Dependencies
+
+```
+yarn install
+
+or
+
+yarn
+```
+
+### 2. Run the server.
+
+After installing all the dependencies, you can run the server through the command
 
 ```bash
 npm run dev
@@ -12,7 +26,7 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The server will open on (http://localhost:3000), having that in mind the API is configured to run in the port 3001, if you can't use the port 3001 you can change it directly on the API, through changing the port on server.ts or through the .env file present in the API side (this apply only for running the server locally)
 
 ### Caution
 

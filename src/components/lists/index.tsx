@@ -7,7 +7,7 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
-import EditContactForm from "./editContact";
+import EditContactForm from "../forms/editContact";
 
 const List = ({ array }: any) => {
   const { deleteContact } = useContact();
